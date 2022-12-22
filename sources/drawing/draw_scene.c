@@ -13,9 +13,10 @@ void draw_scene(t_vars *vars)
 	t_complex c;
 	t_complex z;
 
-    vars->re_min = -1.50f;
-	vars->re_max = 1.50f;
-	vars->im_max = 1.50f;
+	vars->re_min = -2.00f;
+	vars->re_max = 2.00f;
+	vars->im_min = -2.00f;
+	vars->im_max = 2.00f;
     pixel_size = (vars->re_max - vars->re_min) / WIN_WIDTH;
 	y = 0;
 	while (y < WIN_HEIGHT)

@@ -12,14 +12,12 @@
 
 #include "../includes/fractol.h"
 
-//int main()
 int	main(int argc, char **argv)
 {
 	t_vars	v;
 
-
-	//validaçao de inputs
 	validate_and_filter_args(&v, argc, &(*argv));
+	
 	v.mlx = mlx_init();
     v.win = mlx_new_window(v.mlx, WIN_WIDTH, WIN_HEIGHT, "Fractol!");
 	create_img(&v);

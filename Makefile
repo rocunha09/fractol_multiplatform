@@ -22,38 +22,35 @@ SRCS			= 	./sources/fractol.c 							\
 					./sources/helpers/help_information.c			
 
 #Detection OS to select Library
-OS			= $(shell uname)
+OS					= $(shell uname)
 
 # MiniLibX
 ifeq ($(OS), Linux)
-	MLX			= ./includes/mlx_linux
-	MLX_MAKE	= cd ./includes/mlx_linux/ && make
-	MINI		= ./includes/mlx_linux/libmlx.a
-	MLX_FLAGS	= -L $(MLX) -l mlx -lXext -lX11
+	MLX				= ./includes/mlx_linux
+	MLX_MAKE		= cd ./includes/mlx_linux/ && make
+	MINI			= ./includes/mlx_linux/libmlx.a
+	MLX_FLAGS		= -L $(MLX) -l mlx -lXext -lX11
+	CLEAN_FOLDER 	= mlx_linux
 	EXPORT_MLX		= $(shell cp ./includes/mlx_linux/mlx.h ./includes/)
 	EXPORT_KEYS		= $(shell cp ./includes/mlx_linux/keys.h ./includes/)
 else
-	MLX			= ./includes/mlx_mac
-	MLX_MAKE	= cd ./includes/mlx_mac/ && make
-	MINI		= ./includes/mlx_mac/libmlx.a
-	MLX_FLAGS	= -L $(MLX) -l mlx -framework OpenGL -framework AppKit
+	MLX				= ./includes/mlx_mac
+	MLX_MAKE		= cd ./includes/mlx_mac/ && make
+	MINI			= ./includes/mlx_mac/libmlx.a
+	MLX_FLAGS		= -L $(MLX) -l mlx -framework OpenGL -framework AppKit
+	CLEAN_FOLDER 	= mlx_mac
 	EXPORT_MLX		= $(shell cp ./includes/mlx_mac/mlx.h ./includes/)
 	EXPORT_KEYS		= $(shell cp ./includes/mlx_mac/keys.h ./includes/)
 endif
 
 # libft
-LIBFT		=	cd ./includes/libft && make
-LIB		=	./includes/libft/libft.a
-
-OBJS		=	$(SRCS:.c=.o)
-
-CC			=	gcc
-
-FLAGS		=	-Ofast -Wall -Wextra -g 
-
-INCLUDE		=	-I include
-
-NAME		=	fractol
+LIBFT				=	cd ./includes/libft && make
+LIB					=	./includes/libft/libft.a
+OBJS				=	$(SRCS:.c=.o)
+CC					=	gcc
+FLAGS				=	-Ofast -Wall -Wextra -g 
+INCLUDE				=	-I include
+NAME				=	fractol
 
 all:	libft mlx $(NAME)
 	
@@ -63,20 +60,19 @@ libft:
 mlx:
 	@$(MLX_MAKE) $(EXPORT_MLX) $(EXPORT_KEYS)
 
-# -lm fez-se necessário para compilação no linux devido ao uso de math.h 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) $(LIB) $(MINI) $(MLX_FLAGS)  -o $(NAME) -lm
 
 clean:
 	@rm -rf $(OBJS)
 	@cd ./includes/libft && make clean
-	@cd ./includes/mlx_linux && make clean
-	$(shell if [ -f ./includes/mlx.h ];	 then	rm  ./includes/mlx.h;	fi)
-	$(shell if [ -f ./includes/keys.h ]; then	rm  ./includes/keys.h;	fi)	
+	@cd ./includes/$(CLEAN_FOLDER) && make clean
 
 fclean: clean
 	@rm -rf $(NAME)
 	@cd ./includes/libft && make fclean
+	$(shell if [ -f ./includes/mlx.h ];	 then	rm  ./includes/mlx.h;	fi)
+	$(shell if [ -f ./includes/keys.h ]; then	rm  ./includes/keys.h;	fi)	
 
 re:	fclean all
 

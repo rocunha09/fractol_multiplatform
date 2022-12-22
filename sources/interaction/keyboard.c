@@ -2,32 +2,30 @@
 
 #include "../../includes/fractol.h"
 
-int	close_win(t_vars *vars)
+int	close_win(t_vars *v)
 {
-	mlx_clear_window(vars->mlx, vars->win);
-	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_clear_window(v->mlx, v->win);
+	mlx_destroy_window(v->mlx, v->win);
 	exit (0);
 }
 
-void	move_or_close(int keycode, t_vars *vars)
+void	move_or_close(int keycode, t_vars *v)
 {
 	t_vars temp;
-	double step;
 	static double atual_x_position;
 	static double atual_y_position;
-	
-	step = 2;
+	mlx_clear_window(v->mlx, v->win);
 	if (keycode == ESC)
-		close_win(vars);
+		close_win(v);
 	else if (keycode == UP)
-		atual_y_position = vars->y_increment - (step / 10);
+		atual_y_position = v->y_increment - (STEP_MOVE / 10);
     else if (keycode == DOWN)
-		atual_y_position = vars->y_increment + (step / 10);
+		atual_y_position = v->y_increment + (STEP_MOVE / 10);
     else if (keycode == LEFT)
-		atual_x_position = vars->x_increment + (step / 10);
+		atual_x_position = v->x_increment + (STEP_MOVE / 10);
     else if (keycode == RIGHT)
-		atual_x_position = vars->x_increment - (step / 10);
-	vars->x_increment = atual_x_position;
-	vars->y_increment = atual_y_position;
-	draw_scene(&(*vars));
+		atual_x_position = v->x_increment - (STEP_MOVE / 10);
+	v->y_increment = atual_y_position;
+	v->x_increment = atual_x_position;
+	draw_scene(&(*v));
 }

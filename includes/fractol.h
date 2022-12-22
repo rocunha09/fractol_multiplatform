@@ -16,13 +16,14 @@
 # include "./libft/libft.h"
 # include "./keys.h"
 # include "./mlx.h"
-# include <stdio.h>
 # include <math.h>
+# include <stdio.h>
 
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
-# define NMAX 200
-# define STEP 1
+# define NMAX 256
+# define STEP_MOVE 2.0f
+# define STEP_ZOOM 1.0f
 
 typedef struct s_complex {
 	double	re;
@@ -46,6 +47,7 @@ typedef struct	s_vars {
 	double 	re_max;
 	double	im_min;
 	double 	im_max;
+	char 	*fractol;
 }				t_vars;
 
 void	my_mlx_pixel_put(t_vars *data, int x, int y, int color);

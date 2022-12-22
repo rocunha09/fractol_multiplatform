@@ -29,5 +29,4 @@
 # define MOUSE_BTN_LEFT 1
 # define MOUSE_BTN_RIGHT 3
 
-
 #endif
