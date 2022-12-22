@@ -14,29 +14,14 @@
 # define FRACTOL_H
 
 # include "./libft/libft.h"
-# include "./mlx_linux/mlx.h"
+# include "./keys.h"
+# include "./mlx.h"
 # include <stdio.h>
 # include <math.h>
 
-# define CLOSE_BTN 17
-# define ESC 53
-# define UP 126
-# define DOWN 125
-# define LEFT 123
-# define RIGHT 124
-# define IN 61
-# define OUT 45
-# define INN 65451
-# define OUTT 65453
-# define MOUSE_SCROLL_UP 4
-# define MOUSE_SCROLL_DOWN 5
-# define MOUSE_SCROLL_BTN 2
-# define MOUSE_BTN_LEFT 1
-# define MOUSE_BTN_RIGHT 3
-
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
-# define NMAX 80
+# define NMAX 200
 # define STEP 1
 
 typedef struct s_complex {

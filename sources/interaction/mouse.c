@@ -35,38 +35,22 @@ void mouse_zoom(int keycode, t_vars *vars)
 
 	step = 2;
 	mlx_clear_window(vars->mlx, vars->win);
-	mlx_destroy_image(vars->mlx, vars->img);
-	create_img(vars);
+	//mlx_destroy_image(vars->mlx, vars->img);
+	//create_img(vars);
 
 	if (keycode == MOUSE_SCROLL_UP)
 	{
 		printf("IN!\n");
-
-		printf("y_increment:%f\n", vars->scale);
-
 		atual_scale = vars->scale + (step / 10);
 		vars->scale = atual_scale;
-
-		printf("y_increment:%f\n", vars->scale);
-
-		draw_scene(vars);
+		//draw_scene(vars);
 	}
 	else if (keycode == MOUSE_SCROLL_DOWN)
 	{
 		printf("OUT!\n");
-
-		printf("y_increment:%f\n", vars->scale);
-
 		atual_scale = vars->scale - (step / 10);
 		vars->scale = atual_scale;
-
-		printf("y_increment:%f\n", vars->scale);
-
-		draw_scene(vars);
+		//draw_scene(vars);
 	}
-	else
-	{
-		printf("keycode: %i\t", keycode);
-		printf("\\( '-' )/\n");
-	}
+	draw_scene(vars);
 }

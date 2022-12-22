@@ -11,16 +11,5 @@
 */
 void validate_and_filter_args(t_vars *v, int argc, char **argv)
 {
-	char *fractol;		
-	char *parameter_x;
-	char *parameter_y;
-
-	fractol = argv[1];
-	parameter_x = argv[2];
-	parameter_y = argv[3];
-
-    printf("%s\n", fractol);
-	printf("%s\n", parameter_x);
-	printf("%s\n", parameter_y);
-
+	ft_printf("testando libft");
 }

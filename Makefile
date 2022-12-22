@@ -29,13 +29,15 @@ ifeq ($(OS), Linux)
 	MLX_MAKE	= cd ./includes/mlx_linux/ && make
 	MINI		= ./includes/mlx_linux/libmlx.a
 	MLX_FLAGS	= -L $(MLX) -l mlx -lXext -lX11
-	EXPORT		= $(shell cp ./includes/mlx_linux/mlx.h ./includes/)
+	EXPORT_MLX		= $(shell cp ./includes/mlx_linux/mlx.h ./includes/)
+	EXPORT_KEYS		= $(shell cp ./includes/mlx_linux/keys.h ./includes/)
 else
 	MLX			= ./includes/mlx_mac
 	MLX_MAKE	= cd ./includes/mlx_mac/ && make
 	MINI		= ./includes/mlx_mac/libmlx.a
 	MLX_FLAGS	= -L $(MLX) -l mlx -framework OpenGL -framework AppKit
-	EXPORT		= $(shell cp ./includes/mlx_mac/mlx.h ./includes/)
+	EXPORT_MLX		= $(shell cp ./includes/mlx_mac/mlx.h ./includes/)
+	EXPORT_KEYS		= $(shell cp ./includes/mlx_mac/keys.h ./includes/)
 endif
 
 # libft
@@ -46,7 +48,7 @@ OBJS		=	$(SRCS:.c=.o)
 
 CC			=	gcc
 
-FLAGS		=	-Wall -Wextra -g
+FLAGS		=	-Ofast -Wall -Wextra -g 
 
 INCLUDE		=	-I include
 
@@ -58,16 +60,18 @@ libft:
 	@$(LIBFT)
 
 mlx:
-	@$(MLX) $(EXPORT)
+	@$(MLX_MAKE) $(EXPORT_MLX) $(EXPORT_KEYS)
 
+# -lm fez-se necessário para compilação no linux devido ao uso de math.h 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) $(MINI) $(MLX_FLAGS)  -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) $(LIB) $(MINI) $(MLX_FLAGS)  -o $(NAME) -lm
 
 clean:
 	@rm -rf $(OBJS)
 	@cd ./includes/libft && make clean
-	@$(MLX) && make clean
-	@rm  ./includes/mlx.h
+	@cd ./includes/mlx_linux && make clean
+	$(shell if [ -f ./includes/mlx.h ];	 then	rm  ./includes/mlx.h;	fi)
+	$(shell if [ -f ./includes/keys.h ]; then	rm  ./includes/keys.h;	fi)	
 
 fclean: clean
 	@rm -rf $(NAME)
