@@ -11,5 +11,27 @@
 */
 void validate_and_filter_args(t_vars *v, int argc, char **argv)
 {
-	ft_printf("testando libft");
+	if (argc == 2)
+	{
+		if (!ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) ||
+			!ft_strncmp(argv[1], "burning_ship", ft_strlen(argv[1])))
+		{
+			return ;
+		}
+
+	}
+
+	if (argc < 2 || argc > 4)
+	{
+		print_information_to_user();
+		exit(0);
+	}
+	else if (argc == 2 && ft_strncmp(argv[1], "-h", ft_strlen(argv[1])) == 0)
+	{
+		print_information_to_user();
+		exit(0);
+	}
+
+
+
 }

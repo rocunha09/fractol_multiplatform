@@ -49,15 +49,13 @@ typedef struct	s_vars {
 }				t_vars;
 
 void	my_mlx_pixel_put(t_vars *data, int x, int y, int color);
-void	draw_scene(t_vars *vars);
-void		move(int keycode, t_vars *vars);
-int		close_win(t_vars *vars);
-void		mouse(int keycode, int x, int y,  t_vars *vars);
-void		mouse_zoom(int keycode, t_vars *vars);
-void		keyboard_zoom(int keycode, t_vars *vars);
-
 void	validate_and_filter_args(t_vars *v, int argc, char **argv);
+void	print_information_to_user(void);
 void	create_img(t_vars *vars);
+void	draw_scene(t_vars *vars);
+void	move_or_close(int keycode, t_vars *vars);
+void	zoom_or_close(int keycode, int x, int y,  t_vars *vars);
+int		close_win(t_vars *vars);
 
 t_complex	complex_pow2(t_complex z);
 t_complex	complex_add(t_complex z1, t_complex z2);

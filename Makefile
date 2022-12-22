@@ -18,7 +18,8 @@ SRCS			= 	./sources/fractol.c 							\
 					./sources/helpers/calculate_color_trgb.c		\
 					./sources/helpers/mlx_pixel_put.c				\
 					./sources/helpers/complex_calc.c				\
-					./sources/helpers/validate_args.c				
+					./sources/helpers/validate_args.c				\
+					./sources/helpers/help_information.c			
 
 #Detection OS to select Library
 OS			= $(shell uname)

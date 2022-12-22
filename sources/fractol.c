@@ -30,8 +30,8 @@ int	main(int argc, char **argv)
 	draw_scene(&v);
 
 	mlx_hook(v.win, CLOSE_BTN, 0, close_win, &v);
-	mlx_key_hook(v.win, move, &v);
-	mlx_mouse_hook(v.win, mouse, &v);
+	mlx_key_hook(v.win, move_or_close, &v);
+	mlx_mouse_hook(v.win, zoom_or_close, &v);
 	mlx_loop(v.mlx);
 	return (0);
 }
