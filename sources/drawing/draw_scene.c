@@ -4,33 +4,28 @@
 
 void draw_scene(t_vars *v)
 {
-	t_draw_vars vars;
-
-	vars = new_draw_vars(v->re_max, v->re_min);
-	vars.y = 0;
-	while (vars.y < WIN_HEIGHT)
+	int x;
+	int y;
+	double pixel_size;
+	
+	x = 0;
+	y = 0;
+	pixel_size = (v->re_max - v->re_min) / WIN_WIDTH;
+	y = 0;
+	while (y < WIN_HEIGHT)
 	{
-		vars.x = 0;
-		while (vars.x < WIN_WIDTH)
+		x = 0;
+		while (x < WIN_WIDTH)
 		{
-			v->c.re =(v->re_min + (vars.x * vars.pixel_size) * 1 + v->x_increment) * v->scale; 
-			v->c.im =(v->im_max - (vars.y * vars.pixel_size) * 1 + v->y_increment) * v->scale;
-			v->z.re = 0.0;
-			v->z.im = 0.0;
-			vars.n = 1;
-			while (vars.n < NMAX)
-			{
-				if ((complex_norm(v->z) * complex_norm(v->z)) > 4)
-					break;
-				v->z = complex_add(complex_pow2(v->z), v->c);
-				vars.n++;
-			}
-			vars.t = (double)vars.n / NMAX;
-			vars.color = color_bernstein_polynomials1(vars.t);
-			my_mlx_pixel_put(&(*v), vars.x, vars.y, vars.color);
-			vars.x++;
+			if (!(ft_strncmp(v->fractol, "julia", ft_strlen(v->fractol))))
+				julia(&v, pixel_size, x, y);
+			if (!(ft_strncmp(v->fractol, "mandelbrot", ft_strlen(v->fractol))))
+				mandelbrot(&v, pixel_size, x, y);
+			if (!(ft_strncmp(v->fractol, "burning_ship", ft_strlen(v->fractol))))
+				burning_ship(&v, pixel_size, x, y);
+			x++;
 		}
-		vars.y++;
+		y++;
 	}
     mlx_put_image_to_window(v->mlx, v->win, v->img, 0, 0);
 }

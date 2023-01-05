@@ -12,10 +12,6 @@
 
 #include "../../../includes/fractol.h"
 
-void burning_ship(t_vars *v, double pixel_size, int x, int y)
+void burning_ship(t_vars **v, double pixel_size, int x, int y)
 {
-    v->c.re =(v->re_min + (x * pixel_size) * 1 + v->x_increment) * v->scale; 
-    v->c.im =(v->im_max - (y * pixel_size) * 1 + v->y_increment) * v->scale;
-    v->z.re = 0.0;
-    v->z.im = 0.0;
 }

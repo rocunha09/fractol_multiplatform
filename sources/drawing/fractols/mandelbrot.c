@@ -12,24 +12,29 @@
 
 #include "../../../includes/fractol.h"
 
-void mandelbrot(t_vars *v, t_draw_vars *vars)
+void mandelbrot(t_vars **v, double pixel_size, int x, int y)
 {
-    v->c.re =(v->re_min + (vars->x * vars->pixel_size) * 1 + v->x_increment) * v->scale; 
-    v->c.im =(v->im_max - (vars->y * vars->pixel_size) * 1 + v->y_increment) * v->scale;
-    v->z.re = 0.0;
-    v->z.im = 0.0;
-   /*    vars->n = 1;
-    while (vars->n < NMAX)
-    {
-        if ((complex_norm(v->z) * complex_norm(v->z)) > 4)
-            break;
-        v->z = complex_add(complex_pow2(v->z), v->c);
-        vars->n++;
-    }
-    v->interations = vars->n;
-    */
-}
+    int n;
+    int color;
+    double t;
 
-//o calculo depende de n interações 
-//esse n não está chegando ao draw_scene
-//pelo que percebi esse while muda para cada fractal
+    n = 1;
+    t = 0.0;
+    color = 0.0;
+    
+    (*v)->c.re = ((*v)->re_min + (x * pixel_size) * 1 + (*v)->x_increment) * (*v)->scale; 
+    (*v)->c.im = ((*v)->im_max - (y * pixel_size) * 1 + (*v)->y_increment) * (*v)->scale;
+    (*v)->z.re = 0.0;
+    (*v)->z.im = 0.0;
+    n = 1;
+    while (n < NMAX)
+    {
+        if ((complex_norm((*v)->z) * complex_norm((*v)->z)) > 4)
+            break;
+        (*v)->z = complex_add(complex_pow2((*v)->z), (*v)->c);
+        n++;
+    }
+    t = (double)n / NMAX;
+    color = color_bernstein_polynomials1(t);
+    my_mlx_pixel_put((*v), x, y, color);
+}

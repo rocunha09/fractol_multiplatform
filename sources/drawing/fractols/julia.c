@@ -12,7 +12,6 @@
 
 #include "../../../includes/fractol.h"
 
-void julia(t_vars *v, double pixel_size, int x, int y)
+void julia(t_vars **v, double pixel_size, int x, int y)
 {
-
 }

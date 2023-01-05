@@ -84,9 +84,9 @@ void	print_information_to_user(void);
 void	create_img(t_vars *vars);
 
 void	get_fractol(t_vars *v, double pixel_size, int x, int y);
-void	julia(t_vars *v, double pixel_size, int x, int y);
-void	mandelbrot(t_vars *v, t_draw_vars *vars);
-void	burning_ship(t_vars *v, double pixel_size, int x, int y);
+void	julia(t_vars **v, double pixel_size, int x, int y);
+void	mandelbrot(t_vars **v, double pixel_size, int x, int y);
+void	burning_ship(t_vars **v, double pixel_size, int x, int y);
 
 void	draw_scene(t_vars *vars);
 void	move_or_close(int keycode, t_vars *vars);
