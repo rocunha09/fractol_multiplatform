@@ -10,39 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fractol.h"
+#include "../../../includes/fractol.h"
 
-int is_valid_fractol(char *name, char *input)
+void mandelbrot(t_vars *v, t_draw_vars *vars)
 {
-	if (!ft_strncmp(name, input, ft_strlen(input)) &&
-		(ft_strlen(name) == ft_strlen(input)))
-		return (1);
-	return (0);
+    v->c.re =(v->re_min + (vars->x * vars->pixel_size) * 1 + v->x_increment) * v->scale; 
+    v->c.im =(v->im_max - (vars->y * vars->pixel_size) * 1 + v->y_increment) * v->scale;
+    v->z.re = 0.0;
+    v->z.im = 0.0;
+   /*    vars->n = 1;
+    while (vars->n < NMAX)
+    {
+        if ((complex_norm(v->z) * complex_norm(v->z)) > 4)
+            break;
+        v->z = complex_add(complex_pow2(v->z), v->c);
+        vars->n++;
+    }
+    v->interations = vars->n;
+    */
 }
 
-int	validate_and_filter_args(t_vars *v, int argc, char **argv)
-{
-	v->a = 0.0;
-	v->b = 0.0;
-	if (argc >= 2 && argc <= 4)
-	{
-		if (is_valid_fractol("julia", argv[1]) && argc == 4)
-		{
-			if ((ft_atod(argv[2]) >= -2.0 && ft_atod(argv[2]) <= 2.0) &&
-				(ft_atod(argv[3]) >= -2.0 && ft_atod(argv[3]) <= 2.0))
-			{
-				v->fractol =  argv[1];
-				v->a = ft_atod(argv[2]);
-				v->b = ft_atod(argv[3]);
-				return (1);				
-			}
-		}
-		else if ((is_valid_fractol("mandelbrot", argv[1]) ||
-			is_valid_fractol("burning_ship", argv[1])) && (argc < 3))
-		{
-			v->fractol = argv[1];
-			return (1);
-		}
-	}
-	return (0);
-}
+//o calculo depende de n interações 
+//esse n não está chegando ao draw_scene
+//pelo que percebi esse while muda para cada fractal

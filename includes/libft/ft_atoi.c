@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	special_chars(char c)
+int	special_chars(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\f'
 		|| c == '\r' || c == '\n' || c == '\v')

@@ -2,46 +2,35 @@
 
 #include "../../includes/fractol.h"
 
-void draw_scene(t_vars *vars)
+void draw_scene(t_vars *v)
 {
-    int	x;
-	int	y;
-	int n;
-	int color;
-	float t;
-	double pixel_size;
-	t_complex c;
-	t_complex z;
+	t_draw_vars vars;
 
-	vars->re_min = -2.00f;
-	vars->re_max = 2.00f;
-	vars->im_min = -2.00f;
-	vars->im_max = 2.00f;
-    pixel_size = (vars->re_max - vars->re_min) / WIN_WIDTH;
-	y = 0;
-	while (y < WIN_HEIGHT)
+	vars = new_draw_vars(v->re_max, v->re_min);
+	vars.y = 0;
+	while (vars.y < WIN_HEIGHT)
 	{
-		x = 0;
-		while (x < WIN_WIDTH)
-		{										    //deste ponto em diante refere-se a movimento e zoom	
-			c.re = (vars->re_min + (x * pixel_size) * 1 + vars->x_increment) * vars->scale; 
-			c.im = (vars->im_max - (y * pixel_size) * 1 + vars->y_increment) * vars->scale;
-			z.re = 0.0f;
-			z.im = 0.0f;
-			n = 1;
-			while (n < NMAX)
+		vars.x = 0;
+		while (vars.x < WIN_WIDTH)
+		{
+			v->c.re =(v->re_min + (vars.x * vars.pixel_size) * 1 + v->x_increment) * v->scale; 
+			v->c.im =(v->im_max - (vars.y * vars.pixel_size) * 1 + v->y_increment) * v->scale;
+			v->z.re = 0.0;
+			v->z.im = 0.0;
+			vars.n = 1;
+			while (vars.n < NMAX)
 			{
-				if ((complex_norm(z) * complex_norm(z)) > 4)
+				if ((complex_norm(v->z) * complex_norm(v->z)) > 4)
 					break;
-				z = complex_add(complex_pow2(z), c);
-				n++;
+				v->z = complex_add(complex_pow2(v->z), v->c);
+				vars.n++;
 			}
-				t = (float)n / NMAX;
-				color = color_bernstein_polynomials1(t);
-                my_mlx_pixel_put(&(*vars), x, y, color);
-			x++;
+			vars.t = (double)vars.n / NMAX;
+			vars.color = color_bernstein_polynomials1(vars.t);
+			my_mlx_pixel_put(&(*v), vars.x, vars.y, vars.color);
+			vars.x++;
 		}
-		y++;
+		vars.y++;
 	}
-    mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
+    mlx_put_image_to_window(v->mlx, v->win, v->img, 0, 0);
 }

@@ -5,44 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: big <rafade-o@student.42.rio>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 14:39:51 by big               #+#    #+#             */
+/*   Created: 2022/12/30 14:39:51 by big               #+#    #+#             */
 /*   Updated: 2022/12/30 21:42:35 by big              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fractol.h"
 
-int is_valid_fractol(char *name, char *input)
+t_atod_vars new_atod_vars()
 {
-	if (!ft_strncmp(name, input, ft_strlen(input)) &&
-		(ft_strlen(name) == ft_strlen(input)))
-		return (1);
-	return (0);
+    t_atod_vars v;
+
+    v.i = 0;
+    v.nbr = 0.0;
+    v.signal = 1;
+    v.dot_pos = 0;
+    return (v);
 }
 
-int	validate_and_filter_args(t_vars *v, int argc, char **argv)
+t_draw_vars new_draw_vars(double re_max, double re_min)
 {
-	v->a = 0.0;
-	v->b = 0.0;
-	if (argc >= 2 && argc <= 4)
-	{
-		if (is_valid_fractol("julia", argv[1]) && argc == 4)
-		{
-			if ((ft_atod(argv[2]) >= -2.0 && ft_atod(argv[2]) <= 2.0) &&
-				(ft_atod(argv[3]) >= -2.0 && ft_atod(argv[3]) <= 2.0))
-			{
-				v->fractol =  argv[1];
-				v->a = ft_atod(argv[2]);
-				v->b = ft_atod(argv[3]);
-				return (1);				
-			}
-		}
-		else if ((is_valid_fractol("mandelbrot", argv[1]) ||
-			is_valid_fractol("burning_ship", argv[1])) && (argc < 3))
-		{
-			v->fractol = argv[1];
-			return (1);
-		}
-	}
-	return (0);
+   t_draw_vars v;
+
+    v.x = 0;
+	v.y = 0;
+	v.n = 1;
+	v.t = 0.0;
+	v.color = 0.0;
+	v.pixel_size = (re_max - re_min) / WIN_WIDTH;
+    return (v);
 }

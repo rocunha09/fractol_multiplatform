@@ -25,10 +25,27 @@
 # define STEP_MOVE 2.0f
 # define STEP_ZOOM 1.0f
 
+typedef struct s_atod_vars {
+	int i;
+    double nbr;
+    int signal;
+    int dot_pos;
+}	t_atod_vars;
+
+typedef struct s_draw_vars {
+	int	x;
+	int	y;
+	int n;
+	int color;
+	double t;
+	double pixel_size;
+}	t_draw_vars;
+
+
 typedef struct s_complex {
 	double	re;
 	double	im;
-}			t_complex;
+}	t_complex;
 
 typedef struct	s_vars {
 	void	*mlx;
@@ -48,12 +65,29 @@ typedef struct	s_vars {
 	double	im_min;
 	double 	im_max;
 	char 	*fractol;
+	double	a;
+	double	b;
+	t_complex	c;
+	t_complex	z;
+	int			interations;
 }				t_vars;
 
+int is_valid_fractol(char *name, char *input);
+
+t_atod_vars	new_atod_vars();
+t_draw_vars new_draw_vars(double re_max, double re_min);
+int		valid_args(t_vars *v, int argc, char **argv, char *name);
+int		validate_and_filter_args(t_vars *v, int argc, char **argv);
+double	ft_atod(char *str);
 void	my_mlx_pixel_put(t_vars *data, int x, int y, int color);
-void	validate_and_filter_args(t_vars *v, int argc, char **argv);
 void	print_information_to_user(void);
 void	create_img(t_vars *vars);
+
+void	get_fractol(t_vars *v, double pixel_size, int x, int y);
+void	julia(t_vars *v, double pixel_size, int x, int y);
+void	mandelbrot(t_vars *v, t_draw_vars *vars);
+void	burning_ship(t_vars *v, double pixel_size, int x, int y);
+
 void	draw_scene(t_vars *vars);
 void	move_or_close(int keycode, t_vars *vars);
 void	zoom_or_close(int keycode, int x, int y,  t_vars *vars);

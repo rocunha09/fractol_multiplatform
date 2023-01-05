@@ -12,6 +12,9 @@
 
 SRCS			= 	./sources/fractol.c 							\
 					./sources/drawing/draw_scene.c 					\
+					./sources/drawing/fractols/julia.c				\
+					./sources/drawing/fractols/mandelbrot.c			\
+					./sources/drawing/fractols/burning_ship.c		\
 					./sources/interaction/keyboard.c 				\
 					./sources/interaction/mouse.c 					\
 					./sources/helpers/create_img.c 					\
@@ -19,7 +22,11 @@ SRCS			= 	./sources/fractol.c 							\
 					./sources/helpers/mlx_pixel_put.c				\
 					./sources/helpers/complex_calc.c				\
 					./sources/helpers/validate_args.c				\
-					./sources/helpers/help_information.c			
+					./sources/helpers/help_information.c			\
+					./sources/helpers/initialize_abstract_types.c	\
+					./sources/helpers/parse_functions.c				\
+					./sources/helpers/get_fractol.c
+
 
 #Detection OS to select Library
 OS					= $(shell uname)
@@ -48,7 +55,7 @@ LIBFT				=	cd ./includes/libft && make
 LIB					=	./includes/libft/libft.a
 OBJS				=	$(SRCS:.c=.o)
 CC					=	gcc
-FLAGS				=	-Ofast -Wall -Wextra -g 
+FLAGS				=	-Wall -Wextra -g 
 INCLUDE				=	-I include
 NAME				=	fractol
 

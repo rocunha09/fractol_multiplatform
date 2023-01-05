@@ -12,37 +12,14 @@
 
 #include "../../includes/fractol.h"
 
-int is_valid_fractol(char *name, char *input)
-{
-	if (!ft_strncmp(name, input, ft_strlen(input)) &&
-		(ft_strlen(name) == ft_strlen(input)))
-		return (1);
-	return (0);
-}
 
-int	validate_and_filter_args(t_vars *v, int argc, char **argv)
+void	get_fractol(t_vars *v, double pixel_size, int x, int y)
 {
-	v->a = 0.0;
-	v->b = 0.0;
-	if (argc >= 2 && argc <= 4)
-	{
-		if (is_valid_fractol("julia", argv[1]) && argc == 4)
-		{
-			if ((ft_atod(argv[2]) >= -2.0 && ft_atod(argv[2]) <= 2.0) &&
-				(ft_atod(argv[3]) >= -2.0 && ft_atod(argv[3]) <= 2.0))
-			{
-				v->fractol =  argv[1];
-				v->a = ft_atod(argv[2]);
-				v->b = ft_atod(argv[3]);
-				return (1);				
-			}
-		}
-		else if ((is_valid_fractol("mandelbrot", argv[1]) ||
-			is_valid_fractol("burning_ship", argv[1])) && (argc < 3))
-		{
-			v->fractol = argv[1];
-			return (1);
-		}
-	}
-	return (0);
+
+    if (!(ft_strncmp(v->fractol, "julia", ft_strlen(v->fractol))))
+        julia(&(*v), pixel_size, x, y);
+    if (!(ft_strncmp(v->fractol, "mandelbrot", ft_strlen(v->fractol))))
+        mandelbrot(&(*v), pixel_size, x, y);
+    if (!(ft_strncmp(v->fractol, "burning_ship", ft_strlen(v->fractol))))
+        burning_ship(&(*v), pixel_size, x, y);
 }
