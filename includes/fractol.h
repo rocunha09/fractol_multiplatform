@@ -93,10 +93,6 @@ void	move_or_close(int keycode, t_vars *vars);
 void	zoom_or_close(int keycode, int x, int y,  t_vars *vars);
 int		close_win(t_vars *vars);
 
-t_complex	complex_pow2(t_complex z);
-t_complex	complex_add(t_complex z1, t_complex z2);
-double		complex_norm(t_complex z);
-
 int	color_get_trgb(int t, int r, int g, int b);
 int	color_bernstein_polynomials1(double t);
 int	color_get_t(int trgb);

@@ -1,5 +1,3 @@
-//header
-
 #include "../../includes/fractol.h"
 
 int	color_get_trgb(int t, int r, int g, int b)

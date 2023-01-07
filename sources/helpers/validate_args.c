@@ -32,8 +32,8 @@ int	validate_and_filter_args(t_vars *v, int argc, char **argv)
 				(ft_atod(argv[3]) >= -2.0 && ft_atod(argv[3]) <= 2.0))
 			{
 				v->fractol =  argv[1];
-				v->a = ft_atod(argv[2]);
-				v->b = ft_atod(argv[3]);
+				v->c.re = ft_atod(argv[2]);
+				v->c.im = ft_atod(argv[3]);
 				return (1);				
 			}
 		}

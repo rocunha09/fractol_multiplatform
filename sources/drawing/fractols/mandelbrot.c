@@ -12,7 +12,7 @@
 
 #include "../../../includes/fractol.h"
 
-void mandelbrot(t_vars **v, double pixel_size, int x, int y)
+void mandelbrot(struct s_vars  **v, double pixel_size, int x, int y)
 {
     int n;
     int color;
@@ -21,7 +21,6 @@ void mandelbrot(t_vars **v, double pixel_size, int x, int y)
     n = 1;
     t = 0.0;
     color = 0.0;
-    
     (*v)->c.re = ((*v)->re_min + (x * pixel_size) * 1 + (*v)->x_increment) * (*v)->scale; 
     (*v)->c.im = ((*v)->im_max - (y * pixel_size) * 1 + (*v)->y_increment) * (*v)->scale;
     (*v)->z.re = 0.0;
@@ -29,9 +28,11 @@ void mandelbrot(t_vars **v, double pixel_size, int x, int y)
     n = 1;
     while (n < NMAX)
     {
-        if ((complex_norm((*v)->z) * complex_norm((*v)->z)) > 4)
+        if (((*v)->z.re * (*v)->z.re + (*v)->z.im * (*v)->z.im) > 4.0)
             break;
-        (*v)->z = complex_add(complex_pow2((*v)->z), (*v)->c);
+        t = 2 * (*v)->z.re * (*v)->im_max + (*v)->c.im;
+		(*v)->z.re = (*v)->z.re * (*v)->z.re - (*v)->im_max * (*v)->im_max + (*v)->c.re;
+		(*v)->im_max = t;
         n++;
     }
     t = (double)n / NMAX;

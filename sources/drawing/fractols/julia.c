@@ -12,6 +12,29 @@
 
 #include "../../../includes/fractol.h"
 
-void julia(t_vars **v, double pixel_size, int x, int y)
+void julia(struct s_vars  **v, double pixel_size, int x, int y)
 {
+	int		n;
+    int color;
+	double	t;
+
+	(*v)->re_min = -1.2;
+	(*v)->re_max = 1.0;
+	(*v)->im_min = -1.2;
+	(*v)->im_max = 1.0;
+    (*v)->z.re = (((x * pixel_size) / 2) * 1 + (*v)->x_increment) * (*v)->scale; 
+    (*v)->z.im = (((y * pixel_size) / 2) * 1 + (*v)->y_increment) * (*v)->scale;
+	n = 0;
+	while (n < NMAX)
+	{
+		if (((*v)->z.re * (*v)->z.re + (*v)->z.im * (*v)->z.im) > 4.0)
+			break ;
+		t = (*v)->z.re * (*v)->z.re - (*v)->z.im * (*v)->z.im;
+		(*v)->z.im = 2 * (*v)->z.re * (*v)->z.im + (*v)->c.im;
+		(*v)->z.re = t + (*v)->c.re;
+		n++;
+	}
+	t = (double)n / NMAX;
+    color = color_bernstein_polynomials1(t);
+    my_mlx_pixel_put((*v), x, y, color);
 }

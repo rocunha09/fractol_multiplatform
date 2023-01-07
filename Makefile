@@ -20,7 +20,6 @@ SRCS			= 	./sources/fractol.c 							\
 					./sources/helpers/create_img.c 					\
 					./sources/helpers/calculate_color_trgb.c		\
 					./sources/helpers/mlx_pixel_put.c				\
-					./sources/helpers/complex_calc.c				\
 					./sources/helpers/validate_args.c				\
 					./sources/helpers/help_information.c			\
 					./sources/helpers/initialize_abstract_types.c	\
@@ -68,7 +67,7 @@ mlx:
 	@$(MLX_MAKE) $(EXPORT_MLX) $(EXPORT_KEYS)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) $(LIB) $(MINI) $(MLX_FLAGS)  -o $(NAME) -lm
+	@$(CC) $(FLAGS) $(OBJS) $(LIB) $(MINI) $(MLX_FLAGS)  -o $(NAME) -lm
 
 clean:
 	@rm -rf $(OBJS)
