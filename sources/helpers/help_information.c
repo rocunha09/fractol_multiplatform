@@ -16,7 +16,7 @@ void print_information_to_user(void)
     ft_printf("both values can be: (value <= 2 && value >= -2).\n");
     ft_printf("   Ex: bash->./fractol \"julia\" 1.82 1.0\n");
     ft_printf("\n");
-    ft_printf("ideas for julia values: -0.4 0.6 or 0.285 0.01 or -0.8 0.156");
+    ft_printf("ideas for julia values: -0.4 0.6 or 0.285 0.01 or -0.8 0.156\n");
     ft_printf("------------------------------");
     ft_printf("------------------------------\n\n");
 }

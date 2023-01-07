@@ -18,12 +18,8 @@ void julia(struct s_vars  **v, double pixel_size, int x, int y)
     int color;
 	double	t;
 
-	(*v)->re_min = -1.2;
-	(*v)->re_max = 1.0;
-	(*v)->im_min = -1.2;
-	(*v)->im_max = 1.0;
-    (*v)->z.re = (((x * pixel_size) / 2) * 1 + (*v)->x_increment) * (*v)->scale; 
-    (*v)->z.im = (((y * pixel_size) / 2) * 1 + (*v)->y_increment) * (*v)->scale;
+    (*v)->z.re = ((*v)->re_min + (x * pixel_size) * 1 + (*v)->x_increment) * (*v)->scale; 
+    (*v)->z.im = ((*v)->im_max - (y * pixel_size) * 1 + (*v)->y_increment) * (*v)->scale;
 	n = 0;
 	while (n < NMAX)
 	{
