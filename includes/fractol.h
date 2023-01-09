@@ -13,14 +13,14 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include <math.h>
+# include <math.h>
 # include "./libft/libft.h"
 # include "./keys.h"
 # include "./mlx.h"
 
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
-# define NMAX 256
+# define NMAX 80
 # define STEP_MOVE 2.0
 # define STEP_ZOOM 0.10
 
@@ -81,8 +81,8 @@ void			julia(t_vars **v, double pixel_size, int x, int y);
 void			mandelbrot(t_vars **v, double pixel_size, int x, int y);
 void			burning_ship(t_vars **v, double pixel_size, int x, int y);
 void			draw_scene(t_vars *vars);
-void			move_or_close(int keycode, t_vars *vars);
-void			zoom_or_close(int keycode, int x, int y, t_vars *vars);
+int				move_or_close(int keycode, t_vars *vars);
+int				zoom_or_close(int keycode, int x, int y, t_vars *vars);
 int				is_valid_fractol(char *name, char *input);
 int				valid_args(t_vars *v, int argc, char **argv, char *name);
 int				validate_and_filter_args(t_vars *v, int argc, char **argv);

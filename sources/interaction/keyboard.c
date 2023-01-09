@@ -19,7 +19,7 @@ int	close_win(struct s_vars *v)
 	exit (0);
 }
 
-void	move_or_close(int keycode, struct s_vars *v)
+int	move_or_close(int keycode, struct s_vars *v)
 {
 	static double	atual_x_position;
 	static double	atual_y_position;
@@ -39,4 +39,5 @@ void	move_or_close(int keycode, struct s_vars *v)
 	v->y_increment = atual_y_position;
 	v->x_increment = atual_x_position;
 	draw_scene(&(*v));
+	return (0);
 }

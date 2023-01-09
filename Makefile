@@ -55,7 +55,7 @@ LIBFT				=	cd ./includes/libft && make
 LIB					=	./includes/libft/libft.a
 OBJS				=	$(SRCS:.c=.o)
 CC					=	gcc
-FLAGS				=	-Wall -Wextra -g 
+FLAGS				=	-Wall -Wextra -Werror -g 
 INCLUDE				=	-I include
 NAME				=	fractol
 

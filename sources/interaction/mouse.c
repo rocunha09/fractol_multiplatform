@@ -12,7 +12,7 @@
 
 #include "../../includes/fractol.h"
 
-void	zoom_or_close(int keycode, int x, int y, struct s_vars *v)
+int	zoom_or_close(int keycode, int x, int y, struct s_vars *v)
 {
 	static double	atual_scale;
 
@@ -25,4 +25,5 @@ void	zoom_or_close(int keycode, int x, int y, struct s_vars *v)
 		atual_scale = v->scale - (STEP_ZOOM / 10);
 	v->scale = atual_scale;
 	draw_scene(&(*v));
+	return (0);
 }
