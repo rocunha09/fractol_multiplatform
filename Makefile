@@ -1,29 +1,30 @@
-#/* ************************************************************************** */
-#/*                                                                            */
-#/*                                                        :::      ::::::::   */
-#/*   Makefile                                           :+:      :+:    :+:   */
-#/*                                                    +:+ +:+         +:+     */
-#/*   By: big <rafade-o@student.42.rio>              +#+  +:+       +#+        */
-#/*                                                +#+#+#+#+#+   +#+           */
-#/*   Created: 2022/10/23 21:07:56 by big               #+#    #+#             */
-#/*   Updated: 2022/10/23 17:48:02 by big              ###   ########.fr       */
-#/*                                                                            */
-#/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/09 17:23:26 by rafade-o          #+#    #+#              #
+#    Updated: 2023/01/09 17:23:29 by rafade-o         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS			= 	./sources/fractol.c 							\
-					./sources/drawing/draw_scene.c 					\
-					./sources/drawing/fractols/julia.c				\
-					./sources/drawing/fractols/mandelbrot.c			\
-					./sources/drawing/fractols/burning_ship.c		\
-					./sources/interaction/keyboard.c 				\
-					./sources/interaction/mouse.c 					\
-					./sources/helpers/create_img.c 					\
-					./sources/helpers/calculate_color_trgb.c		\
-					./sources/helpers/mlx_pixel_put.c				\
-					./sources/helpers/validate_args.c				\
-					./sources/helpers/help_information.c			\
-					./sources/helpers/initialize_abstract_types.c	\
-					./sources/helpers/parse_functions.c				\
+SRCS			= 	./sources/fractol.c 									\
+					./sources/drawing/draw_scene.c 							\
+					./sources/drawing/fractols/julia.c						\
+					./sources/drawing/fractols/mandelbrot.c					\
+					./sources/drawing/fractols/burning_ship.c				\
+					./sources/interaction/keyboard.c 						\
+					./sources/interaction/mouse.c 							\
+					./sources/helpers/helpers_mlx/create_img.c 				\
+					./sources/helpers/helpers_mlx/calculate_color_trgb.c	\
+					./sources/helpers/helpers_mlx/calculate_raw_color.c		\
+					./sources/helpers/helpers_mlx/mlx_pixel_put.c			\
+					./sources/helpers/validate_args.c						\
+					./sources/helpers/help_information.c					\
+					./sources/helpers/initialize_abstract_types.c			\
+					./sources/helpers/parse_functions.c						\
 					./sources/helpers/get_fractol.c
 
 

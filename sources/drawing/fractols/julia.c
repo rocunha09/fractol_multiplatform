@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_args.c                                    :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: big <rafade-o@student.42.rio>              +#+  +:+       +#+        */
+/*   By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 14:39:51 by big               #+#    #+#             */
-/*   Updated: 2022/12/30 21:42:35 by big              ###   ########.fr       */
+/*   Created: 2023/01/09 10:53:43 by rafade-o          #+#    #+#             */
+/*   Updated: 2023/01/09 10:54:21 by rafade-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fractol.h"
 
-void julia(struct s_vars  **v, double pixel_size, int x, int y)
+static void	calc_pos(struct s_vars **v, double pixel_size, int x, int y)
+{
+	(*v)->z.re = ((*v)->re_min + (x * pixel_size) * 1 + (*v)->x_increment)
+		* (*v)->scale;
+	(*v)->z.im = ((*v)->im_max - (y * pixel_size) * 1 + (*v)->y_increment)
+		* (*v)->scale;
+}
+
+void	julia(struct s_vars **v, double pixel_size, int x, int y)
 {
 	int		n;
-    int color;
+	int		color;
 	double	t;
 
-    (*v)->z.re = ((*v)->re_min + (x * pixel_size) * 1 + (*v)->x_increment) * (*v)->scale; 
-    (*v)->z.im = ((*v)->im_max - (y * pixel_size) * 1 + (*v)->y_increment) * (*v)->scale;
+	calc_pos(&(*v), pixel_size, x, y);
 	n = 0;
 	while (n < NMAX)
 	{
@@ -31,6 +38,6 @@ void julia(struct s_vars  **v, double pixel_size, int x, int y)
 		n++;
 	}
 	t = (double)n / NMAX;
-    color = color_bernstein_polynomials1(t);
-    my_mlx_pixel_put((*v), x, y, color);
+	color = calculate_raw_color(t);
+	my_mlx_pixel_put((*v), x, y, color);
 }

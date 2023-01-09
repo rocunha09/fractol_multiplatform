@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdot.c                                         :+:      :+:    :+:   */
+/*   mlx_pixel_put.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 16:00:09 by rafade-o          #+#    #+#             */
-/*   Updated: 2023/01/09 17:21:23 by rafade-o         ###   ########.fr       */
+/*   Created: 2023/01/08 18:06:03 by rafade-o          #+#    #+#             */
+/*   Updated: 2023/01/08 18:07:46 by rafade-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdot(char c)
+#include "../../../includes/fractol.h"
+
+void	my_mlx_pixel_put(t_vars *data, int x, int y, int color)
 {
-	if (c == '.')
-		return (1);
-	return (0);
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

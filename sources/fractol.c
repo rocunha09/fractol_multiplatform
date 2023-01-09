@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: big <rafade-o@student.42.rio>              +#+  +:+       +#+        */
+/*   By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 14:39:51 by big               #+#    #+#             */
-/*   Updated: 2022/11/19 12:59:54 by big              ###   ########.fr       */
+/*   Created: 2022/10/21 14:39:51 by rafade-o          #+#    #+#             */
+/*   Updated: 2023/01/08 17:41:28 by rafade-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	main(int argc, char **argv)
 {
 	t_vars	v;
 
-	if(!validate_and_filter_args(&v, argc, &(*argv)))
+	if (!validate_and_filter_args(&v, argc, &(*argv)))
 	{
-		print_information_to_user();	
+		print_information_to_user();
 		exit(1);
 	}
 	v.mlx = mlx_init();
-    v.win = mlx_new_window(v.mlx, WIN_WIDTH, WIN_HEIGHT, "Fractol!");
+	v.win = mlx_new_window(v.mlx, WIN_WIDTH, WIN_HEIGHT, "Fractol!");
 	create_img(&v);
 	v.re_min = -2.00;
 	v.re_max = 2.00;

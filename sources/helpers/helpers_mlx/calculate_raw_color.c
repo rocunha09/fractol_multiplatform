@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdot.c                                         :+:      :+:    :+:   */
+/*   calculate_raw_color.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 16:00:09 by rafade-o          #+#    #+#             */
-/*   Updated: 2023/01/09 17:21:23 by rafade-o         ###   ########.fr       */
+/*   Created: 2023/01/08 18:03:47 by rafade-o          #+#    #+#             */
+/*   Updated: 2023/01/08 18:04:03 by rafade-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdot(char c)
+#include "../../../includes/fractol.h"
+
+int	calculate_raw_color(double t)
 {
-	if (c == '.')
-		return (1);
-	return (0);
+	int	raw_color;
+
+	raw_color = color_get_trgb(0,
+			(int)(9 * (1 - t) * t * t * t * 255),
+			(int)(15 * (1 - t) * t * t * 255),
+			(int)(8.5 * (1 - t) * t * 255)
+			);
+	return (raw_color % 0xFFFFFF);
 }

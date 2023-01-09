@@ -6,13 +6,13 @@
 /*   By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:00:09 by rafade-o          #+#    #+#             */
-/*   Updated: 2022/05/05 17:18:23 by rafade-o         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:21:55 by rafade-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int  ft_is_signal(char c)
+int	ft_is_signal(char c)
 {
-  if (c == '-' || c == '+')
-    return (1);
-  return (0);
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
 }

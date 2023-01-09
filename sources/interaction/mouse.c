@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/08 17:46:34 by rafade-o          #+#    #+#             */
+/*   Updated: 2023/01/08 17:47:30 by rafade-o         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/fractol.h"
 
-void	zoom_or_close(int keycode, int x, int y,  struct s_vars *v)
+void	zoom_or_close(int keycode, int x, int y, struct s_vars *v)
 {
-	static double atual_scale;
-    
+	static double	atual_scale;
+
 	mlx_clear_window(v->mlx, v->win);
 	if (keycode == CLOSE_BTN)
 		close_win(v);
