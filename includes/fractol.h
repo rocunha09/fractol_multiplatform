@@ -6,7 +6,7 @@
 /*   By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 11:59:09 by rafade-o          #+#    #+#             */
-/*   Updated: 2023/01/09 17:17:28 by rafade-o         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:54:03 by rafade-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
-# define NMAX 80
+# define NMAX 256
 # define STEP_MOVE 2.0
 # define STEP_ZOOM 0.10
 
