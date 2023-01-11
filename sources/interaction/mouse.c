@@ -16,7 +16,7 @@ int	zoom_or_close(int keycode, int x, int y, struct s_vars *v)
 {
 	static double	atual_scale;
 
-	mlx_clear_window(v->mlx, v->win);
+	atual_scale = v->scale;
 	if (keycode == CLOSE_BTN)
 		close_win(v);
 	if (keycode == MOUSE_SCROLL_DOWN)

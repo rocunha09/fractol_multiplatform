@@ -6,7 +6,7 @@
 #    By: rafade-o <rafade-o@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:23:26 by rafade-o          #+#    #+#              #
-#    Updated: 2023/01/09 17:23:29 by rafade-o         ###   ########.fr        #
+#    Updated: 2023/01/11 11:16:26 by rafade-o         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ LIBFT				=	cd ./includes/libft && make
 LIB					=	./includes/libft/libft.a
 OBJS				=	$(SRCS:.c=.o)
 CC					=	gcc
-FLAGS				=	-Wall -Wextra -Werror -g 
+FLAGS				=	-Wall -Wextra -Werror 
 INCLUDE				=	-I include
 NAME				=	fractol
 

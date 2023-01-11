@@ -73,6 +73,7 @@ typedef struct s_vars
 
 t_atod_vars		new_atod_vars(void);
 t_draw_vars		new_draw_vars(double re_max, double re_min);
+t_vars			new_t_vars(void);
 void			my_mlx_pixel_put(t_vars *data, int x, int y, int color);
 void			print_information_to_user(void);
 void			create_img(t_vars *vars);
