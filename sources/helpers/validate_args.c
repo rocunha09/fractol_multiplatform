@@ -26,16 +26,10 @@ int	validate_and_filter_args(t_vars *v, int argc, char **argv)
 	{
 		if (is_valid_fractol("julia", argv[1]) && argc == 4)
 		{
-			if ((ft_atod(argv[2]) >= -2.0
-					&& ft_atod(argv[2]) <= 2.0)
-				&& (ft_atod(argv[3]) >= -2.0
-					&& ft_atod(argv[3]) <= 2.0))
-			{
-				v->fractol = argv[1];
-				v->c.re = ft_atod(argv[2]);
-				v->c.im = ft_atod(argv[3]);
-				return (1);
-			}
+			v->fractol = argv[1];
+			v->c.re = ft_atod(argv[2]);
+			v->c.im = ft_atod(argv[3]);
+			return (1);
 		}
 		else if ((is_valid_fractol("mandelbrot", argv[1])
 				|| is_valid_fractol("burning_ship", argv[1]))
